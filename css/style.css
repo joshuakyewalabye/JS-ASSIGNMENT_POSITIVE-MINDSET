@@ -2,20 +2,22 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 30px;
+  padding: 10px 35px;
   border-bottom: 1px solid #eee;
-  height: 60px;
-  max-height: 90px;
+  background-color: #ccc;
 }
 body {
   font-family: "Trebuchet MS";
   box-sizing: border-box;
   line-height: normal;
+  padding: 0;
+  margin: 0;
 }
 nav {
   display: flex;
   gap: 10px;
   align-items: center;
+  padding-bottom: 10px;
 }
 #optionsFiltered {
   padding-right: 20px;
@@ -124,7 +126,7 @@ select#optionsFiltered {
 /* cart and checkout form layout */
 .cart-item-div,
 .checkOut-div {
-  padding: 16px;
+  padding: 36px;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -180,7 +182,10 @@ select#optionsFiltered {
 #checkout-form button:hover {
   background: #374151;
 }
-
+p.intro-text {
+  text-align: center;
+  padding: 25px 15px 25px 15px;
+}
 /* FOOTER STYLING  */
 footer {
   text-align: center;
