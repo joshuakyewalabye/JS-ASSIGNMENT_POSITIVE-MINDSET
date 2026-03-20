@@ -1,0 +1,206 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  border-bottom: 1px solid #eee;
+  height: 60px;
+  max-height: 90px;
+}
+body {
+  font-family: "Trebuchet MS";
+  box-sizing: border-box;
+  line-height: normal;
+}
+nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+#optionsFiltered {
+  padding-right: 20px;
+}
+nav a {
+  text-decoration: none;
+  color: #555;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+nav a:hover {
+  background: #f5f5f5;
+  color: #000;
+}
+
+select#optionsFiltered {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  color: #555;
+  cursor: pointer;
+}
+
+/* products layout */
+
+#product-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+}
+
+/* child combinator ">*" ensures only direct children targetted */
+#product-container > * {
+  flex-basis: 240px; /*sets a minimum size*/
+  flex-grow: 1; /*lets items expand to fill space evenly*/
+}
+
+/* product card */
+.product-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 12px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* softer shadow for subtle depth */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease; /* smooth animation */
+}
+
+.product-card:hover {
+  transform: translateY(-5px); /* lifts the card */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* deeper shadow on hover */
+}
+
+/* product image on products page */
+.product-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  object-fit: contain;
+}
+
+/* cart item image */
+.cart-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+/* quantity controls */
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.qty-btn:hover {
+  background: #f5f5f5;
+}
+
+.qty-display {
+  font-size: 14px;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* cart and checkout form layout */
+.cart-item-div,
+.checkOut-div {
+  padding: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* form styling */
+#checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 500px;
+  padding: 16px;
+  margin: 0 auto;
+}
+
+#checkout-form input {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.add-to-cart,
+#remove-item,
+.cartBtn {
+  padding: 8px 34px;
+  background: orange;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-to-cart:hover {
+  background-color: #2c5420; /* darker blue on hover */
+  transform: translateY(-2px); /* subtle lift effect */
+}
+
+#remove-item:hover {
+  background-color: #ea0101; /* darker blue on hover */
+  transform: translateY(-2px); /* subtle lift effect */
+}
+
+#checkout-form button {
+  padding: 10px;
+  background: orange;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#checkout-form button:hover {
+  background: #374151;
+}
+
+/* FOOTER STYLING  */
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  color: #555;
+  margin-top: 40px;
+}
+@media (max-width: 480px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  #product-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 10px;
+  }
+}
