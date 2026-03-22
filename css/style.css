@@ -113,7 +113,8 @@ select#optionsFiltered {
   cursor: pointer;
   font-size: 16px;
 }
-
+.checkOut-div{
+  text-align:center;
 .qty-btn:hover {
   background: #f5f5f5;
 }
