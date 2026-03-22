@@ -24,10 +24,14 @@ if (!checkoutSummary || checkoutSummary.length === 0) {
     `;
         containerDiv.appendChild(summaryHTML);
     }
-    const totalAmount = checkoutSummary.reduce((total, item) => total + item.price, 0)
+//GLOSH 
+        const subTotalAmount = checkoutSummary.reduce((total, item) => total + item.price, 0)
+    const taxAmount = 0.18 * subTotalAmount
     containerDiv.innerHTML += `
     <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px;">
-        <p><strong>Total: UGX ${totalAmount}</strong></p>
+        <p><strong> Sub Total: UGX ${subTotalAmount}</strong></p>
+         <p><strong>  Tax (18% VAT): UGX ${taxAmount}</strong></p>
+          <p><strong> Order Total: UGX ${subTotalAmount + taxAmount}</strong></p>
     </div>
 `;
     console.log(totalAmount)
