@@ -19,14 +19,14 @@ if (!checkoutSummary || checkoutSummary.length === 0) {
 
     for (let item of checkoutSummary) {
         const summaryHTML = document.createElement('div');
-        summaryHTML.innerHTML = `
-        <p>${item.name} - UGX ${item.price}</p>
-    `;
+    summaryHTML.innerHTML = `
+    <p>${item.name} x${item.quantity} - UGX ${item.price * item.quantity}</p>
+`;
         containerDiv.appendChild(summaryHTML);
     }
 //GLOSH 
-  const subTotalAmount = checkoutSummary.reduce((total, item) => total + item.price, 0);
-    const taxAmount = 0.18 * subTotalAmount;
+   const subTotalAmount = checkoutSummary.reduce((total, item) => total + (item.price * item.quantity), 0)
+    const taxAmount = 0.18 * subTotalAmount
     containerDiv.innerHTML += `
     <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px;">
         <p><strong> Sub Total: UGX ${subTotalAmount}</strong></p>
@@ -34,7 +34,7 @@ if (!checkoutSummary || checkoutSummary.length === 0) {
           <p><strong> Order Total: UGX ${subTotalAmount + taxAmount}</strong></p>
     </div>
 `;
-   // console.log(totalAmount)
+   
 
 }
 
