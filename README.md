@@ -53,3 +53,15 @@ Flexi-Buy/
 - **Products** (`index.html`) — Browse and filter all products, add to cart
 - **Cart** (`cart.html`) — View cart items, adjust quantities, remove items, see order summary
 - **Checkout** (`checkout.html`) — Enter delivery details and place order
+
+
+some email validation explanation
+
+  // regex explanation:
+            // ^           : start of string
+            // [^\s@]+     : one or more characters except whitespace and '@'
+            // @           : must contain '@'
+            // [^\s@]+     : one or more characters except whitespace and '@'
+            // \.          : literal dot
+            // [^\s@]+     : one or more characters except whitespace and '@'
+            // $           : end of string

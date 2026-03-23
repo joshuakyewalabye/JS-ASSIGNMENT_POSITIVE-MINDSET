@@ -54,9 +54,19 @@ document.querySelector('#checkout-form').addEventListener('submit', (e) => {
         }
 
         // validate email format
-        if (!email.includes('@') || !email.includes('.')) {
+        // if (!email.includes('@') || !email.includes('.')) {
+        //     throw new Error("Invalid email format");
+        // }
+        function isValidEmail(email) {
+          
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        if (!isValidEmail(email)) {
             throw new Error("Invalid email format");
         }
+
+      
 
         // validate phone - 10 digits
         if (!/^\d{10}$/.test(phone)) {
