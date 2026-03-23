@@ -1,8 +1,10 @@
 //error when retrieving data from localStorage handled 
 let checkoutSummary;
 try {
-    checkoutSummary = JSON.parse(localStorage.getItem("cart"));//valid json expected 
+    checkoutSummary = JSON.parse(localStorage.getItem("cart")); //valid json expected 
     if (!checkoutSummary) throw new Error("Cart is empty");
+    //ensure each item has a quantity property
+    checkoutSummary = checkoutSummary.map(item => ({ ...item, quantity: item.quantity || 1 }));
 } catch (error) {
     alert("Error loading cart: " + error.message);
     window.location.href = 'index.html';
@@ -12,31 +14,30 @@ if (!checkoutSummary || checkoutSummary.length === 0) {
     window.location.href = 'index.html';
 } else {
     const containerDiv = document.querySelector('.checkOut-div');
-    const quantity = checkoutSummary.length;
+    const quantity = checkoutSummary.reduce((sum, item) => sum + item.quantity, 0)
 
     // heading once, outside loop
-    containerDiv.innerHTML = `<h3>Order Summary (${quantity} items)</h3> `;
+    containerDiv.innerHTML = `<h3>ORDER SUMMARY (${quantity} items)</h3> `;
 
     for (let item of checkoutSummary) {
         const summaryHTML = document.createElement('div');
         summaryHTML.innerHTML = `
-        <p>${item.name} - UGX ${item.price}</p>
-    `;
+    <p>${item.name} x${item.quantity} - UGX ${item.price * item.quantity}</p>
+`;
         containerDiv.appendChild(summaryHTML);
     }
-    const totalAmount = checkoutSummary.reduce((total, item) => total + item.price, 0)
+    const subTotalAmount = checkoutSummary.reduce((total, item) => total + (item.price * item.quantity), 0)
+    const taxAmount = 0.18 * subTotalAmount
     containerDiv.innerHTML += `
-    <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px;">
-        <p><strong>Total: UGX ${totalAmount}</strong></p>
+    <div style="margin-bottom: 10px; border-top: 2px solid #1b3d17; padding-top: 10px;">
+        <p><strong> Sub Total: UGX ${subTotalAmount}</strong></p>
+         <p><strong>  Tax (18% VAT): UGX ${taxAmount}</strong></p>
+          <p><strong> Order Total: UGX ${subTotalAmount + taxAmount}</strong></p>
     </div>
 `;
-    console.log(totalAmount)
-
+    console.log(subTotalAmount)
 }
 
-
-
-//grabbing inputs from input fields 
 document.querySelector('#checkout-form').addEventListener('submit', (e) => {
     //stops browser from sending http request allowing js handle the form submission
     e.preventDefault();
