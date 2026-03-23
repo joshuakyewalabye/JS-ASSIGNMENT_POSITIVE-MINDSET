@@ -36,7 +36,7 @@ if (!checkoutSummary || checkoutSummary.length === 0) {
 
 
 
-//grabbing inputs from input fileds 
+//grabbing inputs from input fields 
 document.querySelector('#checkout-form').addEventListener('submit', (e) => {
     //stops browser from sending http request allowing js handle the form submission
     e.preventDefault();
